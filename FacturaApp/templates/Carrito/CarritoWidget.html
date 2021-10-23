@@ -1,0 +1,82 @@
+<table class="table table-bordered table-striped table-hover" style="color: rgb(0, 0, 0);">
+
+    <thead>
+        <tr>
+            <th colspan="3" class="text-center">
+                Factura
+            </th>
+        </tr>
+
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Suma</th>
+        </tr>
+</thead>
+
+
+
+<tbody>
+
+    {% if request.session.carro.items %}
+        {% for key, value in request.session.carro.items %} 
+            
+        <form method="post">
+            <tr class="text-center">
+
+                <td>
+                    {% csrf_token %}                   
+                    {{value.producto}}                   
+                </td>
+                
+                <td>
+                    {% csrf_token %}                                      
+                    {{value.cantidad}}
+                </td>
+                
+                
+                <td>
+
+                    <a href="{% url 'agregarCarrito' value.inventario_id %}" class="btn btn-sm btn-success">+</a>
+                    <a href="{% url 'restarCarrito' value.inventario_id %}" class="btn btn-sm btn-success">-</a><br/>
+                    {% csrf_token %}                    
+                   
+                    {{value.precio}}$
+                    
+
+                </td>
+                 
+
+            </tr>
+        </form>
+        
+        {% endfor %} 
+          </form>
+        {% else %} 
+        <tr>
+
+            <td colspan="3">
+                <div class="alert alert-danger text-center">
+                    Venta finalizada, agregue productos para realizar una nueva
+                </div>
+            </td>
+        </tr>
+        {% endif %}
+
+</tbody>
+
+<tfoot style="text-align: center;">
+    <tr>
+        <td colspan="3">
+            Total: {{importe_total_carro}}$
+            <br>
+            <br> 
+            <a href="{% url 'limpiarCarrito' %}" class="btn btn-primary" >Finalizar venta </a>
+            
+              
+        </td>
+    </tr>
+</form>
+
+</tfoot>
+</table>

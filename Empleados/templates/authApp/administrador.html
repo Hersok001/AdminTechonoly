@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Admin Technology - Empleados</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'loginApp/assets/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'loginApp/css/styles.css' %}" rel="stylesheet" />
+    </head>
+
+  
+    <body id="page-top">
+    
+    <nav class="navbar navbar-expand-lg navbar-dark " id="mainNav" style="background-color:  black;" >
+      <div class="container px-4 px-lg-5">
+          <a class="navbar-brand" href="{% url 'home' %}">Admin Technology</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              Menu
+              <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item"><a class="nav-link" href="{% url 'agregar' %}" >Agregar empleado</a></li>
+                  <li class="nav-item"><a class="nav-link" href="{% url 'administrador' %}">Empleados</a></li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+      
+   
+      <section class="projects-section bg-light" id="projects" style="padding: 6rem;">
+        <div class="container px-4 px-lg-5">
+            <!-- Featured Project Row-->
+            <div class="row gx-0 mb-10 mb-lg-10 align-items-center">
+                <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'loginApp/assets/img/bg-empleados.jpg' %}" alt="..." /></div>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="featured-text text-center text-lg-left "style="color: solid #f8f9fa">
+                        <h4>¡Bienvenido!</h4>
+                        <p class="text-black-50 mb-0">Desde este panel podras agregar y gestionar los empleados del almacén.</p>
+                    </div>
+                </div>
+            </div>
+            
+    </section>
+   
+    {% block content %}
+
+    <div class="jumbotron jumbotron-fluid bg-white">
+      <div class="container text-center">
+        
+        <br>
+        <h1 class="display-4">Empleados</h1>
+        <br>
+        
+        
+      </div>
+    </div>
+
+    
+    
+    <div class="container text-center mb-5 mb-lg-5">
+    <table class="table table-striped table-dark">
+        <thead>
+          <tr>
+            
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Contraseña</th>
+            <th scope="col">Rol</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acción</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+
+            {% for admin in admins %}
+          <tr>
+            
+            <td>{{ admin }}</td>
+            
+            <th scope="row">{{ admin.apellido }}</th>
+            
+            <th scope="row">{{ admin.usuario }}</th>
+            
+            <th scope="row">{{ admin.contraseña }}</th>
+            
+            <th scope="row">{{ admin.rol }}</th>
+            
+            <th scope="row">{{ admin.estado }}</th>
+        
+            <td>
+                <a class="btn btn-warning btn-sm" href="{% url 'modificar' admin.id %}">Editar</a>
+                <a class="btn btn-danger btn-sm" href="{% url 'eliminar' admin.id %}">Eliminar</a>
+                
+            </td>
+            
+          </tr>
+            {% endfor %}
+          
+        </tbody>
+        
+      </table>
+    </div>
+    
+    
+
+
+  {% endblock %}
+
+
+
+
+
+
+
+     <!-- Footer-->
+     <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Misión Tic Unal - Grupo 5 </div></footer>
+     <!-- Bootstrap core JS-->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- Core theme JS-->
+     <script src="{% static 'loginApp/js/scripts.js' %}"></script>
+     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+     <!-- * *                               SB Forms JS                               * *-->
+     <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+</body>
+
+
+</html>

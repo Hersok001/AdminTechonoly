@@ -1,0 +1,77 @@
+{% extends "InventariosApp/inventario.html" %}
+
+{% block content %}
+<div class="jumbotron jumbotron-fluid bg-white">
+    <div class="container text-center">
+      
+      <br>
+      <h1 class="display-4">Agregar producto</h1>
+      <br>
+      
+      
+    </div>
+  </div>
+
+
+
+<div class="container text-center mb-5 mb-lg-5">
+
+    <form method="post">
+        <div class="form-group">
+        
+        Producto
+        <hr> 
+            
+        {% csrf_token %}
+        {{ form.nombre_producto }}
+        <br/>
+        <hr>
+        
+        </div>
+        <div class="form-group">
+        
+            Cantidad de productos: 
+            <hr>
+                
+            {% csrf_token %}
+            {{ form.cantidad_inventario }}
+            <br/>
+            <hr>
+            
+        </div>
+        
+        <div class="form-group">
+                
+                Descrpción del producto:
+                <hr>
+                     
+                {% csrf_token %}
+                {{ form.descripcion_producto }}
+                <br/>
+                <hr>
+                
+        </div>
+        <div class="form-group">
+            
+            Precio por unidad del producto:
+            <hr> 
+                
+            {% csrf_token %}
+            {{ form.precio }}
+            <br/>
+            <hr>
+            
+        </div>
+
+    
+
+        <button type="submit" class="btn btn-primary">Agregar al inventario</button>
+      </form>
+
+
+
+</div>
+
+
+
+{% endblock %}

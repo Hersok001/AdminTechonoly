@@ -1,0 +1,98 @@
+{% extends "authApp/administrador.html" %}
+
+{% block content %}
+
+<div class="jumbotron jumbotron-fluid bg-white">
+    <div class="container text-center">
+      
+      <br>
+      <h1 class="display-4">Nuevo empleado</h1>
+      <br>
+      
+      
+    </div>
+  </div>
+
+
+
+<div class="container text-center mb-5 mb-lg-5">
+
+    <form method="post">
+        <div class="form-group">
+        
+        Nombre:
+        <hr> 
+            
+        {% csrf_token %}
+        {{ form.nombre }}
+        <br/>
+        <hr>
+        
+        </div>
+        <div class="form-group">
+        
+            Apellido: 
+            <hr>
+                
+            {% csrf_token %}
+            {{ form.apellido }}
+            <br/>
+            <hr>
+            
+        </div>
+        
+        <div class="form-group">
+                
+                Usuario:
+                <hr>
+                     
+                {% csrf_token %}
+                {{ form.usuario }}
+                <br/>
+                <hr>
+                
+        </div>
+        <div class="form-group">
+            
+            Contraseña:
+            <hr> 
+                
+            {% csrf_token %}
+            {{ form.contraseña }}
+            <br/>
+            <hr>
+            
+        </div>
+
+        <div class="form-group">
+            Rol en la empresa: 
+            <hr> 
+               
+            {% csrf_token %}
+            {{ form.rol }}
+            <br/>
+            <hr>
+            
+        </div>
+
+        <div class="form-group">
+            
+            Estado del trabajador:
+            <hr>     
+            {% csrf_token %}
+            {{ form.estado }}
+            <br/>
+            <hr>
+            
+        </div>
+
+        <button type="submit" class="btn btn-primary">Agregar empleado</button>
+      </form>
+
+
+
+</div>
+
+
+
+{% endblock %}
